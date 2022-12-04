@@ -1,23 +1,28 @@
+import { GameType } from "../../types";
+import { Card } from "../card";
+
 type Props = {
-  games: Array<{
-    name: string;
-    category: string;
-    image: string;
-  }>;
+  games: Array<GameType>;
 };
 
 export const Catalog = ({ games }: Props) => {
   return (
-    <ul className="grid grid-cols-4 gap-4">
-      {games.map(({ category, image, name }, index) => (
-        <li key={index}>
-          <div>
-            <img src={image} alt={name} />
-            <h3>{name}</h3>
-            <p>{category}</p>
-          </div>
-        </li>
-      ))}
-    </ul>
+    <div className="flex justify-center w-full">
+      <ul
+        className="
+        grid
+        sm:grid-cols-1
+        md:grid-cols-2
+        lg:grid-cols-3
+        xl:grid-cols-4
+        gap-6"
+      >
+        {games.map((game, index) => (
+          <li>
+            <Card {...game} key={index} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
