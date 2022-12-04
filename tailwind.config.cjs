@@ -8,6 +8,9 @@ module.exports = {
         primary: "#00AEFF",
         secundary: "#8F9199",
       },
+      screens: {
+        xs: "0px",
+      },
     },
   },
   plugins: [],
