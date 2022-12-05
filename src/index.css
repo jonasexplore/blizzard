@@ -7,3 +7,7 @@ body {
   color: #ffffff;
   font-family: "Poppins", sans-serif;
 }
+
+[data-state="open"] > .header-option {
+  transform: rotate(-180deg);
+}
