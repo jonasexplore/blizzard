@@ -2,12 +2,28 @@ import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { GameMenuItems } from "../../data/games-menu";
 import { Button } from "../button";
+import { SubmenuGamesItems } from "../../data/submenu-games";
+import { SubmenuSports } from "../../data/submenu-sports";
 
 const NavigationMenuList = () => (
-  <NavigationMenu.List className="flex justify-between items-center xs:flex-col md:flex-row">
+  <NavigationMenu.List
+    className="
+      flex
+      justify-between
+      items-center
+      xs:flex-col
+      md:flex-row"
+  >
     <div className="flex flex-1 gap-8 xs:flex-col md:flex-row">
       <NavigationMenu.Item>
-        <NavigationMenu.Trigger>Jogos</NavigationMenu.Trigger>
+        <NavigationMenu.Trigger className="flex gap-4 items-center">
+          Jogos{" "}
+          <img
+            src="./assets/icons/arrow.svg"
+            alt=""
+            className="header-option"
+          />
+        </NavigationMenu.Trigger>
         <NavigationMenu.Content
           className="
           bg-background
@@ -26,45 +42,52 @@ const NavigationMenuList = () => (
             <ul className="grid sm:grid-cols-3 md:grid-cols-6 gap-16">
               {GameMenuItems.map(({ name, image }) => {
                 return (
-                  <div className="flex flex-col text-center items-center w-28">
+                  <li
+                    className="
+                      flex
+                      flex-col
+                      text-center
+                      items-center
+                      w-28
+                      cursor-pointer"
+                  >
                     <img className="w-16" src={image} alt="" />
                     <span>{name}</span>
-                  </div>
+                  </li>
                 );
               })}
             </ul>
           </div>
-          <div className="bg-[#15171B] h-16 flex flex-wrap gap-16 justify-center">
-            <div className="flex gap-2 items-center">
-              <img src="./assets/icons/menu.svg" alt="menu" width={8} />
-              <a href="#" className="font-bold">
-                Ver todos jogos
-              </a>
-            </div>
-            <div className="flex gap-2 items-center">
-              <img src="./assets/icons/logo.svg" alt="menu" width={24} />
-              <a href="#" className="font-bold">
-                Aplicativo Battle.net
-              </a>
-            </div>
-            <div className="flex gap-2 items-center">
-              <img src="./assets/icons/downloads.svg" alt="menu" width={24} />
-              <a href="#" className="font-bold">
-                Downloads
-              </a>
-            </div>
-            <div className="flex gap-2 items-center">
-              <img src="./assets/icons/chat.svg" alt="menu" sizes="24" />
-              <a href="#" className="font-bold">
-                Fóruns dos jogos
-              </a>
-            </div>
-          </div>
+          <ul
+            className="
+            bg-foreground
+              h-16
+              flex
+              flex-wrap
+              gap-16
+              justify-center"
+          >
+            {SubmenuGamesItems.map(({ image, label, width }, index) => (
+              <li key={index} className="flex gap-2 items-center">
+                <img src={image} alt="menu" width={width} />
+                <a href="#" className="font-bold">
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </NavigationMenu.Content>
       </NavigationMenu.Item>
 
       <NavigationMenu.Item>
-        <NavigationMenu.Trigger>Esportes</NavigationMenu.Trigger>
+        <NavigationMenu.Trigger className="flex gap-4 items-center">
+          Esportes{" "}
+          <img
+            src="./assets/icons/arrow.svg"
+            alt=""
+            className="header-option"
+          />
+        </NavigationMenu.Trigger>
         <NavigationMenu.Content
           className="
           bg-background
@@ -73,9 +96,38 @@ const NavigationMenuList = () => (
             left-0
             top-0
             -z-10
-            h-[640px]"
+            h-[640px]
+            flex
+            flex-col
+            justify-between
+            "
         >
-          <div>Teste 2</div>
+          <div className="mx-6 flex flex-1 justify-center items-center">
+            <ul className="flex gap-16">
+              {SubmenuSports.map(({ image, title }, index) => (
+                <li key={index} className="w-44 text-center cursor-pointer">
+                  <img src={image} alt="" />
+                  <span>{title}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div
+            className="
+            bg-foreground
+              h-16
+              flex
+              flex-wrap
+              gap-16
+              justify-center"
+          >
+            <div className="flex gap-2 items-center">
+              <img src="./assets/icons/torneio.svg" alt="menu" />
+              <a href="#" className="font-bold">
+                Torneios da comunidade
+              </a>
+            </div>
+          </div>
         </NavigationMenu.Content>
       </NavigationMenu.Item>
 
