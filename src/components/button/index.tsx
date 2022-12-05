@@ -6,6 +6,11 @@ type Props = React.DetailedHTMLProps<
   icon?: React.ReactNode;
 };
 
+const variants = {
+  primary: "bg-primary text-white py-2 px-4 rounded",
+  secondary: "text-white py-2 px-4 rounded border border-white",
+};
+
 export const Button = ({
   variant = "primary",
   children,
@@ -13,10 +18,7 @@ export const Button = ({
   icon = false,
   ...props
 }: Props) => {
-  const buttonClasses =
-    variant === "primary"
-      ? "bg-primary text-white py-2 px-4 rounded"
-      : "text-white py-2 px-4 rounded border border-white";
+  const buttonClasses = variants[variant];
 
   return (
     <button
